@@ -1,7 +1,5 @@
-import App from "@/App";
-import AdminLayout from "@/components/layout/AdminLayout";
+import App from "@/App";;
 import About from "@/pages/About/About";
-import Analytics from "@/pages/Analytics";
 import { createBrowserRouter } from "react-router";
 
 export const router = createBrowserRouter([
@@ -13,15 +11,6 @@ export const router = createBrowserRouter([
             path: "about"
         }]
     },
-    {
-        path: "/admin",
-        Component: AdminLayout,
-        children:[
-            {
-                path: "analytics",
-                Component: Analytics
-            }
-        ]
-    }
+    
 ])
 

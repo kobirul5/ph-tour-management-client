@@ -3,8 +3,8 @@ import { Outlet } from 'react-router'
 import './App.css'
 
 import CommonLayout from './components/layout/CommonLayout'
-import Navbar from './components/shared/Navbar'
-import Footer from './components/shared/Footer'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
 
 function App() {
   //CommonLayout
