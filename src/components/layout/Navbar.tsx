@@ -14,7 +14,8 @@ import {
 import { ModeToggle } from "./ModeToggler"
 import Logo from "@/assets/icons/Logo"
 import { Link } from "react-router"
-import { useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import {  authApi, useLogoutMutation, useUserInfoQuery } from "@/redux/features/auth/auth.api"
+import { useAppDispatch } from "@/redux/hook"
 
 // Navigation links array to be used in both desktop and mobile menus
 const navigationLinks = [
@@ -26,6 +27,15 @@ const navigationLinks = [
 
 export default function Navbar() {
   const { data } = useUserInfoQuery(undefined)
+  const [logout] = useLogoutMutation()
+  const dispatch = useAppDispatch()
+
+
+  const handleLogout = () => {
+    logout(undefined)
+    localStorage.removeItem("token")
+    dispatch(authApi.util.resetApiState())
+  }
 
 
   return (
@@ -115,7 +125,7 @@ export default function Navbar() {
           <ModeToggle />
           {
             data?.data?.email &&
-            <Button>Logout</Button>}
+            <Button onClick={handleLogout}>Logout</Button>}
           {
             !data?.data?.email &&
             <Button asChild className="text-sm">
