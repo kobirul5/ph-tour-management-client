@@ -1,11 +1,11 @@
-import { AppSidebar } from "@/components/app-sidebar"
-import { Separator } from "@/components/ui/separator"
+import { AppSidebar } from "@/components/app-sidebar";
+import { Separator } from "@/components/ui/separator";
 import {
   SidebarInset,
   SidebarProvider,
   SidebarTrigger,
-} from "@/components/ui/sidebar"
-import { Outlet } from "react-router"
+} from "@/components/ui/sidebar";
+import { Outlet } from "react-router";
 
 export default function DashboardLayout() {
   return (
@@ -18,12 +18,11 @@ export default function DashboardLayout() {
             orientation="vertical"
             className="mr-2 data-[orientation=vertical]:h-4"
           />
-
         </header>
         <div className="flex flex-1 flex-col gap-4 p-4">
           <Outlet />
         </div>
       </SidebarInset>
     </SidebarProvider>
-  )
+  );
 }

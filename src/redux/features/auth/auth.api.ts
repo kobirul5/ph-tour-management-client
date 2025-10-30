@@ -1,30 +1,30 @@
-import { baseApi } from "@/redux/baseApi"
-import type { IResponse, ISendOtp, IVerifyOtp } from "@/types"
+import { baseApi } from "@/redux/baseApi";
+import type { IResponse, ISendOtp, IVerifyOtp } from "@/types";
 
- 
 export const authApi = baseApi.injectEndpoints({
-    endpoints: (builder)=>({
-        login:builder.mutation({
-            query:(userInfo)=>({
-                url:"/auth/login",
-                method:"POST",
-                data:userInfo
-            })
-        }),
-        logout:builder.mutation({
-            query:()=>({
-                url:"/auth/logout",
-                method:"POST",
-            })
-        }),
-        register:builder.mutation({
-            query:(userInfo)=>({
-                url:"/user/register",
-                method:"POST",
-                data:userInfo
-            })
-        }),
-        sendOtp: builder.mutation<IResponse<null>, ISendOtp>({
+  endpoints: (builder) => ({
+    login: builder.mutation({
+      query: (userInfo) => ({
+        url: "/auth/login",
+        method: "POST",
+        data: userInfo,
+      }),
+    }),
+    logout: builder.mutation({
+      query: () => ({
+        url: "/auth/logout",
+        method: "POST",
+      }),
+      invalidatesTags: ["USER"],
+    }),
+    register: builder.mutation({
+      query: (userInfo) => ({
+        url: "/user/register",
+        method: "POST",
+        data: userInfo,
+      }),
+    }),
+    sendOtp: builder.mutation<IResponse<null>, ISendOtp>({
       query: (userInfo) => ({
         url: "/otp/send",
         method: "POST",
@@ -39,20 +39,20 @@ export const authApi = baseApi.injectEndpoints({
       }),
     }),
     userInfo: builder.query({
-      query: (userInfo) => ({
+      query: () => ({
         url: "/user/me",
         method: "GET",
-        data: userInfo,
       }),
+      providesTags: ["USER"],
     }),
-    })
-})
+  }),
+});
 
 export const {
-  useRegisterMutation, 
+  useRegisterMutation,
   useLoginMutation,
-  useLogoutMutation, 
-  useSendOtpMutation, 
+  useSendOtpMutation,
   useVerifyOtpMutation,
   useUserInfoQuery,
-} = authApi
+  useLogoutMutation,
+} = authApi;

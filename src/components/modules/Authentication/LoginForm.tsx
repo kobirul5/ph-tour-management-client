@@ -37,7 +37,7 @@ export function LoginForm({
         navigate("/");
       }
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    } catch (err:any) {
+    } catch (err: any) {
       console.error(err);
 
       if (err.data.message === "Password does not match") {

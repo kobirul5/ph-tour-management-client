@@ -1,6 +1,7 @@
-
 export default function Bookings() {
   return (
-    <div>Bookings</div>
-  )
+    <div>
+      <h1> This is Bookings component </h1>
+    </div>
+  );
 }
