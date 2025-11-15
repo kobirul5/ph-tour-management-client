@@ -11,8 +11,7 @@ import { userSidebarItems } from "./userSidebarItems";
 import { withAuth } from "@/utils/withAuth";
 import Unauthorized from "@/pages/Unauthorized";
 import { role } from "@/constants/role";
-import type { TRole } from "@/types";
-
+import { TRole } from "@/types";
 
 export const router = createBrowserRouter([
   {
